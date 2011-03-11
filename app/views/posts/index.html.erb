@@ -1,0 +1,27 @@
+<h1>KS Webs blog</h1>
+
+<table id="indx">
+<% @posts.reverse.each do |post| %>
+  <tr style="border-bottom:1px solid #D3D3D3">
+    <td>
+      <h2><%= link_to post.title, post %></h2>
+      <i><b>Published on:</b> <%= german_date(post.published_on) %> <b>Author:</b> <%= post.author %></i><br />
+      <p>
+	<%= post.body %>
+	</p>
+     </td> 
+   <% if logged_in? %>
+    <td class="controls"><%= link_to 'Edit', edit_post_path(post) %><br />
+    <%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% else %>
+    <td class="controls"><%= link_to 'Edit', edit_post_path(post) %><br />
+    <%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% end %>
+ </tr>
+<% end %>
+</table>
+<br />
+
+<div id="control">
+<%= link_to 'New Post', new_post_path %>
+</div>

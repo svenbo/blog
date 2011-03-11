@@ -1,0 +1,10 @@
+<hr />
+<%= div_for comment do %>
+<p style="font-size:0.9em">
+  <strong>Posted <%= time_ago_in_words(comment.created_at) %>
+    ago</strong></p>
+       <p>
+	 <%= h(comment.combody) %>
+	 <hr />
+	 </p>
+<% end %>
